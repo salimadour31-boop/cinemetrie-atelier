@@ -1,0 +1,40 @@
+[hidden] { display: none !important; }
+:root { --bg:#111319; --panel:#1c1f28; --line:#30353f; --ink:#e9ecf2; --muted:#969eaf; --mint:#8fd3c1; --amber:#ffb454; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 22px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.brand { display: flex; gap: 12px; align-items: center; } h1 { margin: 0; font-size: 22px; } header p { margin: 2px 0 0; color: var(--muted); font-size: 13px; max-width: 760px; }
+.lang button { background: #242834; color: var(--ink); border: 0; padding: 6px 12px; border-radius: 6px; cursor: pointer; margin-left: 4px; }
+.lang button.on { background: var(--mint); color: #0d2420; }
+main { padding: 18px 22px; display: grid; gap: 18px; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.top { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 16px; }
+@media (max-width: 900px) { .top { grid-template-columns: 1fr; } }
+.drop { display: grid; place-items: center; text-align: center; gap: 6px; min-height: 260px; border: 2px dashed var(--line); border-radius: 12px; cursor: pointer; padding: 20px; color: var(--muted); }
+.drop strong { color: var(--ink); font-size: 17px; } .drop.over { border-color: var(--mint); }
+video { width: 100%; max-height: 420px; background: #000; border-radius: 10px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.controls input[type=number] { width: 60px; } input, select { background: #242834; color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; }
+button, .btn { background: #242834; color: var(--ink); border: 1px solid var(--line); padding: 7px 12px; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px; }
+button:disabled { opacity: .45; cursor: default; } button.primary { background: var(--mint); color: #0d2420; border: 0; font-weight: 600; }
+.progress { position: relative; height: 22px; margin-top: 10px; background: #242834; border-radius: 6px; overflow: hidden; }
+#bar { height: 100%; width: 0; background: linear-gradient(90deg, #4e9e8c, var(--mint)); transition: width .2s; }
+#status { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stat { background: #242834; border-radius: 8px; padding: 8px 10px; } .stat b { display: block; font-size: 22px; } .stat span { color: var(--muted); font-size: 12px; }
+.small { color: var(--muted); font-size: 12px; }
+figure { margin: 0; } figcaption { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+canvas { width: 100%; height: auto; background: #15171d; border-radius: 8px; display: block; }
+.charts { display: grid; gap: 14px; } .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .row { grid-template-columns: 1fr; } }
+.listhead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; } h2 { margin: 0; font-size: 17px; }
+.exports { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; color: var(--muted); font-size: 13px; }
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; }
+.shot { background: #242834; border-radius: 10px; overflow: hidden; position: relative; border: 2px solid transparent; }
+.shot.cur { border-color: var(--mint); }
+.shot img, .shot .ph { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #15171d; cursor: pointer; }
+.shot .meta { padding: 6px 8px; font-size: 12px; display: grid; gap: 4px; } .shot .meta b { color: var(--amber); }
+.shot .pal { display: flex; height: 10px; } .shot .pal i { flex: 1; }
+.shot .x { position: absolute; top: 6px; right: 6px; padding: 2px 7px; background: rgba(0,0,0,.6); border: 0; }
+.shot input { width: 100%; font-size: 12px; }
+footer { padding: 16px 22px; color: var(--muted); font-size: 12px; } a { color: var(--mint); }

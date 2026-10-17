@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinémétrie Atelier — découpage en plans, ASL, rythme du montage</title>
+<meta name="description" content="Découpage automatique d'une vidéo en plans dans le navigateur : coupes à l'image près, durée moyenne des plans (ASL), rythme du montage, code-barres couleur, planche-contact, export EDL/CSV/VTT. Gratuit, MIT, sans envoi.">
+<link rel="icon" href="icons/icon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><img src="icons/icon.svg" alt="" width="34" height="34"><div><h1 data-i18n="title">Cinémétrie Atelier</h1><p data-i18n="tagline"></p></div></div>
+  <nav class="lang"><button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="kab">KAB</button></nav>
+</header>
+<main>
+  <section class="top">
+    <div class="player">
+      <label id="drop" class="drop"><input id="file" type="file" accept="video/*,.mkv,.mov" hidden><strong data-i18n="drop"></strong><span data-i18n="dropHint"></span></label>
+      <video id="video" controls playsinline muted hidden></video>
+      <div class="controls">
+        <label><span data-i18n="sensitivity"></span> <input id="sens" type="range" min="0" max="1" step="0.05" value="0.5"><output id="sensOut">50%</output></label>
+        <label><span data-i18n="minShot"></span> <input id="minShot" type="number" min="0.1" max="5" step="0.1" value="0.4"> s</label>
+        <label><span data-i18n="speed"></span> <select id="speed"><option value="1">1×</option><option value="2">2×</option><option value="4" selected>4×</option><option value="8">8×</option><option value="16">16× (rapide · fast)</option></select></label>
+        <label class="chk"><input id="precise" type="checkbox" checked> <span data-i18n="precise"></span></label>
+        <button id="go" class="primary" disabled data-i18n="analyse"></button>
+        <button id="cutHere" disabled data-i18n="cutHere"></button>
+      </div>
+      <div class="progress"><div id="bar"></div><span id="status"></span></div>
+    </div>
+    <div class="statsbox">
+      <div class="stats" id="stats"></div>
+      <p class="small" data-i18n="privacy"></p>
+      <p class="small" data-i18n="help"></p>
+    </div>
+  </section>
+  <section class="charts">
+    <figure><figcaption data-i18n="rhythm"></figcaption><canvas id="rhythm" width="1200" height="180"></canvas></figure>
+    <div class="row">
+      <figure><figcaption data-i18n="histogram"></figcaption><canvas id="hist" width="560" height="180"></canvas></figure>
+      <figure><figcaption data-i18n="barcode"></figcaption><canvas id="barcode" width="560" height="180"></canvas></figure>
+    </div>
+  </section>
+  <section>
+    <div class="listhead"><h2 data-i18n="shotList"></h2>
+      <div class="exports"><span data-i18n="exports"></span>
+        <button data-exp="csv">CSV</button><button data-exp="edl">EDL</button><button data-exp="vtt">WebVTT</button><button data-exp="json">JSON</button>
+        <button data-exp="sheet" data-i18n="sheet"></button><button data-exp="barcode" data-i18n="barcodePng"></button>
+        <label class="btn"><input id="importP" type="file" accept=".json,.csv" hidden><span data-i18n="importP"></span></label>
+      </div>
+    </div>
+    <div id="shots" class="shots"></div>
+    <p class="small" data-i18n="limits"></p>
+  </section>
+</main>
+<footer>MIT © 2026 salimadour31-boop · <a href="https://github.com/salimadour31-boop/cinemetrie-atelier">GitHub</a></footer>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
