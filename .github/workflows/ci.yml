@@ -1,0 +1,27 @@
+# Unit tests (Node) and end-to-end test in a real browser (Playwright Chromium) on a synthetic film.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Unit tests
+        run: npm test
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.48.2
+          npx playwright install --with-deps chromium
+      - name: Build the test film (ffmpeg)
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          bash tests/make-video.sh
+      - name: End-to-end test (fixture film with known cuts)
+        run: node tests/e2e.mjs
